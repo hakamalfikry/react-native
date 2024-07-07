@@ -13,69 +13,31 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 
-function mainTab(){
-  return (
-    <Tab.Navigator
-      screenOptions={({ route })=>({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === "Home") {
-            iconName = "home"
-          } else if (route.nama === "Products") {
-            iconName ="cart"
-          } else {
-            iconName = "person"
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'black',
-        tabBarInactiveBackgroundColor:'grey'
-      })}>
-
-      <Tab.Screen 
-      name="Home" 
-      component={Home} 
-      options={{ headerShown: false, tabBarBadge: 4 }} 
-      />
-      <Tab.Screen
-       name="Products" 
-       component={Products}
-       options={{ headerShown: false, tabBarBadge:3 }}
-       />
-      <Tab.Screen 
-      name="Profile" 
-      component={Profile}
-      options={{ headerShown: false }}  
-      />
-    </Tab.Navigator>
-  )
-}
-
 function MainDrawer(){
   return (
-    <Drawer.Navigator initialRouteName="Home"
-        screenOptions={({ route }) => ({
-            drawerActiveBackgroundColor: '#F0EDF7',
-            drawerActiveTintColor: 'black',
-            drawerIcon: ({ focused, color, size }) => {
-                let iconName;
+    <Drawer.Navigator 
+      initialRouteName="Home"
+      //drawerContent={(props) => <CustomDrawerContent {...props} />}
+        // screenOptions={({ route }) => ({
+        //     drawerActiveBackgroundColor: '#F0EDF7',
+        //     drawerActiveTintColor: 'black',
+        //     drawerIcon: ({ focused, color, size }) => {
+        //         let iconName;
       
-                if (route.name === "Home") {
-                  iconName = "home"
-                } else if (route.nama === "Products") {
-                  iconName ="cart"
-                } else {
-                  iconName = "person"
-                }
+        //         if (route.name === "Home") {
+        //           iconName = "home"
+        //         } else if (route.nama === "Products") {
+        //           iconName ="cart"
+        //         } else {
+        //           iconName = "person"
+        //         }
       
-                return <Ionicons name={iconName} size={size} color={color} />
-              },
-        })}
+        //         return <Ionicons name={iconName} size={size} color={color} />
+        //       },
+        // })}
     >
-    <Drawer.Screen name="Home" component={Home} />
+    <Drawer.Screen name="Home" component={Home} options={{
+      title: "Beranda"}} />
     <Drawer.Screen name="Products" component={Products} />
     <Drawer.Screen name="Profile" component={Profile} />
   </Drawer.Navigator>
