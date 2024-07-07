@@ -10,6 +10,7 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+
 function mainTab(){
   return (
     <Tab.Navigator
@@ -26,18 +27,21 @@ function mainTab(){
           }
 
           return <Ionicons name={iconName} size={size} color={color} />
-        }
+        },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'black',
+        tabBarInactiveBackgroundColor:'grey'
       })}>
 
       <Tab.Screen 
       name="Home" 
       component={Home} 
-      options={{ headerShown: false }} 
+      options={{ headerShown: false, tabBarBadge: 4 }} 
       />
       <Tab.Screen
        name="Products" 
        component={Products}
-       options={{ headerShown: false }}
+       options={{ headerShown: false, tabBarBadge:3 }}
        />
       <Tab.Screen 
       name="Profile" 
@@ -53,7 +57,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen 
-        name='MainTab' 
+        name="MainTab" 
         component={mainTab} 
         options={{ headerShown: false }}
         />
