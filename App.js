@@ -56,7 +56,25 @@ function mainTab(){
 
 function MainDrawer(){
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator initialRouteName="Home"
+        screenOptions={({ route }) => ({
+            drawerActiveBackgroundColor: '#F0EDF7',
+            drawerActiveTintColor: 'black',
+            drawerIcon: ({ focused, color, size }) => {
+                let iconName;
+      
+                if (route.name === "Home") {
+                  iconName = "home"
+                } else if (route.nama === "Products") {
+                  iconName ="cart"
+                } else {
+                  iconName = "person"
+                }
+      
+                return <Ionicons name={iconName} size={size} color={color} />
+              },
+        })}
+    >
     <Drawer.Screen name="Home" component={Home} />
     <Drawer.Screen name="Products" component={Products} />
     <Drawer.Screen name="Profile" component={Profile} />
